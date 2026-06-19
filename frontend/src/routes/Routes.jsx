@@ -66,16 +66,16 @@ const PageRoutes = () => {
   useEffect(() => {
       // prevent duplicate script injection
       const existingScript = document.querySelector(
-        'script[src="https://app.chatboq.com/widget.js"]'
+        'script[src="https://uat.chatboq.com/widget.js"]'
       );
   
       if (!existingScript) {
         const script = document.createElement("script");
-        script.src = "https://app.chatboq.com/widget.js";
+        script.src = "https://uat.chatboq.com/widget.js";
         script.async = true;
         script.setAttribute(
           "data-orgId",
-          "ec3fd4fa-c79e-408c-bfb3-ee42a3aeffd1"
+          "c98dac12-3d18-4020-8b34-883a98058c75"
         );
   
         document.body.appendChild(script);
