@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import ProtectedRoutes from "./ProctectedRoutes";
+import { useEffect } from "react";
 
 // Public Pages
 import Login from "../pages/Login";
@@ -47,6 +48,38 @@ import ManageCertificates from "../pages/admin/ManageCertificates";
 
 
 const PageRoutes = () => {
+  useEffect(() => {
+  // Prevent duplicate Crisp injection
+  if (!window.CRISP_WEBSITE_ID) {
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "fba03a2b-279e-40e2-85c2-52bc6ef16464";
+
+    const script = document.createElement("script");
+    script.src = "https://client.crisp.chat/l.js";
+    script.async = true;
+
+    document.head.appendChild(script);
+  }
+}, []);
+// chatboq widget
+  // useEffect(() => {
+  //     // prevent duplicate script injection
+  //     const existingScript = document.querySelector(
+  //       'script[src="https://app.chatboq.com/widget.js"]'
+  //     );
+  
+  //     if (!existingScript) {
+  //       const script = document.createElement("script");
+  //       script.src = "https://app.chatboq.com/widget.js";
+  //       script.async = true;
+  //       script.setAttribute(
+  //         "data-orgId",
+  //         "ec3fd4fa-c79e-408c-bfb3-ee42a3aeffd1"
+  //       );
+  
+  //       document.body.appendChild(script);
+  //     }
+  //   }, []);
   return (
     <Routes>
       {/* Public Routes */}

@@ -4,24 +4,37 @@ import LandingNavbar from "../components/common/LandingNavbar";
 import Dashboard from "./Dashboard"; // this contains sections with ids: home, courses, faqs, contact
 
 export default function LandingPage() {
-   useEffect(() => {
-    // prevent duplicate script injection
-    const existingScript = document.querySelector(
-      'script[src="https://staging.chatboq.com/widget.js"]'
-    );
+  //  useEffect(() => {
+  //   // prevent duplicate script injection
+  //   const existingScript = document.querySelector(
+  //     'script[src="https://app.chatboq.com/widget.js"]'
+  //   );
 
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.src = "https://staging.chatboq.com/widget.js";
-      script.async = true;
-      script.setAttribute(
-        "data-orgId",
-        "114b5d0b-5dce-4b1c-ac5a-82ed3eb9d369"
-      );
+  //   if (!existingScript) {
+  //     const script = document.createElement("script");
+  //     script.src = "https://app.chatboq.com/widget.js";
+  //     script.async = true;
+  //     script.setAttribute(
+  //       "data-orgId",
+  //       "ec3fd4fa-c79e-408c-bfb3-ee42a3aeffd1"
+  //     );
 
-      document.body.appendChild(script);
-    }
-  }, []);
+  //     document.body.appendChild(script);
+  //   }
+  // }, []);
+  useEffect(() => {
+  // Prevent duplicate Crisp injection
+  if (!window.CRISP_WEBSITE_ID) {
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "fba03a2b-279e-40e2-85c2-52bc6ef16464";
+
+    const script = document.createElement("script");
+    script.src = "https://client.crisp.chat/l.js";
+    script.async = true;
+
+    document.head.appendChild(script);
+  }
+}, []);
   return (
     <>
       <LandingNavbar />
