@@ -11,7 +11,15 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async(e) => {  
+    
+    // Chatboq Custom Event
+     
+    window.Chatboq?.trackEvent({
+    btn_click: "login_success",
+   
+  });
+  // Chatboq Custom Event
     e.preventDefault();
   console.log("Login submitted:", { email, password });
     try{
@@ -29,7 +37,6 @@ export default function Login() {
     localStorage.setItem("token", data.data.token);
     localStorage.setItem("role", data.data.role);
     localStorage.setItem("userName", data.data.name);
-   
   
    // ✅ Redirect based on role
         if (data.data.role === "Student") {

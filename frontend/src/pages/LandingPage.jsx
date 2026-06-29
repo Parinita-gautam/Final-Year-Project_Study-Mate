@@ -8,16 +8,16 @@ export default function LandingPage() {
    useEffect(() => {
     // prevent duplicate script injection
     const existingScript = document.querySelector(
-      'script[src="https://uat.chatboq.com/widget.js"]'
+      'script[src="https://dev.chatboq.com/widget.js"]'
     );
 
     if (!existingScript) {
       const script = document.createElement("script");
-      script.src = "https://uat.chatboq.com/widget.js";
+      script.src = "https://dev.chatboq.com/widget.js";
       script.async = true;
       script.setAttribute(
         "data-orgId",
-        "c98dac12-3d18-4020-8b34-883a98058c75"
+        "aa1bb612-1730-48cd-b6c5-0cd1483ba5a4"
       );
 
       document.body.appendChild(script);
